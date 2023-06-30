@@ -32,7 +32,7 @@ public class User extends AuditingEntity {
     private String email;
 
     @Column
-    private Long heart;
+    private Double temperature;
 
     protected User() {
     }
