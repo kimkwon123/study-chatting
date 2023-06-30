@@ -27,7 +27,7 @@ public class RegisterController {
         String msg = service.sendMail(ar.get("email").toString());
         return ResponseJson.success("success", msg);
     }
-    @PostMapping("/register")
+    @PostMapping
     public ResponseJson<String> register(
             @RequestBody RegisterRequest req
             ) {
