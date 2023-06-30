@@ -1,4 +1,4 @@
-package com.chatting.chatting.filter;
+package com.chatting.chatting.certification.filter;
 
 
 import com.chatting.chatting.certification.service.LoginService;

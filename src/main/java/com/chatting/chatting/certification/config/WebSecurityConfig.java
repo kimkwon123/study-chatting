@@ -2,8 +2,8 @@ package com.chatting.chatting.certification.config;
 
 import com.chatting.chatting.certification.service.LoginService;
 import com.chatting.chatting.certification.util.JwtUtil;
-import com.chatting.chatting.filter.JwtAuthenticationFilter;
-import com.chatting.chatting.filter.JwtAuthorizationFilter;
+import com.chatting.chatting.certification.filter.JwtAuthenticationFilter;
+import com.chatting.chatting.certification.filter.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
