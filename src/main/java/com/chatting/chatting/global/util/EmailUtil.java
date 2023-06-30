@@ -45,7 +45,7 @@ public class EmailUtil {
         MimeMessage m = javaMailSender.createMimeMessage();
         MimeMessageHelper h = new MimeMessageHelper(m, "UTF-8");
         try {
-            h.setFrom("ty_ty123@naver.com");
+            h.setFrom(id);
             h.setTo(email);
             h.setSubject("인증번호 발송");
             h.setText("인증번호 : " + random);
