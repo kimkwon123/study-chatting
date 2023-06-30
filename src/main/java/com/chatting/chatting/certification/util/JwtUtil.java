@@ -2,7 +2,7 @@ package com.chatting.chatting.certification.util;
 
 
 
-import com.chatting.chatting.certification.type.UserRoleEnum;
+import com.chatting.chatting.certification.model.type.UserRoleEnum;
 import com.chatting.chatting.global.exection.CustomException;
 import com.chatting.chatting.global.model.type.ErrorCode;
 import io.jsonwebtoken.*;

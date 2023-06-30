@@ -2,7 +2,7 @@ package com.chatting.chatting.certification.model;
 
 
 import com.chatting.chatting.certification.model.entity.User;
-import com.chatting.chatting.certification.type.UserRoleEnum;
+import com.chatting.chatting.certification.model.type.UserRoleEnum;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
