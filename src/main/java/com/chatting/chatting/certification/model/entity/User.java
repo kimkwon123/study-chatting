@@ -1,6 +1,7 @@
 package com.chatting.chatting.certification.model.entity;
 
 import com.chatting.chatting.certification.model.type.UserGender;
+import com.chatting.chatting.certification.type.UserRoleEnum;
 import com.chatting.chatting.global.model.entity.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,6 +34,10 @@ public class User extends AuditingEntity {
 
     @Column
     private Long heart;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserRoleEnum role = UserRoleEnum.USER;
 
     protected User() {
     }
