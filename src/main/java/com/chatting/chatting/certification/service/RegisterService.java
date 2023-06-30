@@ -1,5 +1,6 @@
 package com.chatting.chatting.certification.service;
 
+import com.chatting.chatting.certification.config.PasswordConfig;
 import com.chatting.chatting.certification.model.entity.User;
 import com.chatting.chatting.certification.model.request.RegisterRequest;
 import com.chatting.chatting.certification.model.type.UserGender;
@@ -24,6 +25,7 @@ public class RegisterService {
     private final UserRepository userRepository;
     private final EmailUtil emailUtil;
     private final RedisUtil redisUtil;
+    private final PasswordConfig passwordEncoder;
 
     private double DEFALUT_TEMPERATURE = 3.6;
     private String WOMAN = "여자";
@@ -35,7 +37,7 @@ public class RegisterService {
 
         userRepository.save(User.builder()
                         .userId(request.userId())
-                        .userPw(request.userPw())
+                        .userPw(passwordEncoder.passwordEncoder().encode(request.userPw()))
                         .email(request.email())
                         .gender(userGender)
                         .temperature(DEFALUT_TEMPERATURE)
