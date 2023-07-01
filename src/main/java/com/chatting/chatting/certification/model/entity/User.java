@@ -42,8 +42,12 @@ public class User extends AuditingEntity {
 
     @Setter
     @Column
+    Double starFromCustomer;
+
+    @Column
     @Enumerated(EnumType.STRING)
-    private UserRoleEnum role = UserRoleEnum.USER;
+    @Setter
+    private UserRoleEnum role;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Shop> shopList = new ArrayList<>();
