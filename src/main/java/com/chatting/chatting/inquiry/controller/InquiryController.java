@@ -29,7 +29,7 @@ public class InquiryController {
         return ResponseJson.success("success", msg);
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
     public ResponseJson<List<InquiryResponse>> getAllInquiry(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         List<InquiryResponse> responseDtoList = inquiryService.getAllInquirys(userDetails);
 

@@ -1,7 +1,6 @@
 package com.chatting.chatting.inquiry.service;
 
 import com.chatting.chatting.certification.model.UserDetailsImpl;
-import com.chatting.chatting.certification.model.entity.User;
 import com.chatting.chatting.global.exection.CustomException;
 import com.chatting.chatting.global.model.type.ErrorCode;
 import com.chatting.chatting.inquiry.entity.Inquiry;
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -94,7 +92,7 @@ public class InquiryService {
         if(userDetails.getUsername().equals(inquiry.getUser().getUserId())){
             return true;
         }
-        throw new CustomException(ErrorCode.NO_AUTHORITHY);
+        throw new CustomException(ErrorCode.NO_AUTHORITY_TO_INQUIRY);
     }
 
 }
