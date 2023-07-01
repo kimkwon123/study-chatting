@@ -1,2 +1,4 @@
-package com.chatting.chatting.reply.request;public record ReplyRequest() {
+package com.chatting.chatting.reply.request;
+
+public record ReplyRequest(String content) {
 }
