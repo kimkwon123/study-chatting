@@ -1,4 +1,4 @@
-package com.chatting.chatting.certification.type;
+package com.chatting.chatting.certification.model.type;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

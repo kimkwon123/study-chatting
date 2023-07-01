@@ -19,10 +19,6 @@ public class GlobalRestControllerAdvice {
                 .body(ResponseJson.error(e.getErrorCode().name(),e.getErrorCode().getMessage()));
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> applicationHandler(MethodArgumentNotValidException e){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ResponseJson.error("fail","잘못된 데이터 형식입니다."));
-    }
+
 
 }

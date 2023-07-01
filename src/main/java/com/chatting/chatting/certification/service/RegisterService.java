@@ -5,7 +5,7 @@ import com.chatting.chatting.certification.model.entity.User;
 import com.chatting.chatting.certification.model.request.RegisterRequest;
 import com.chatting.chatting.certification.model.type.UserGender;
 import com.chatting.chatting.certification.repository.UserRepository;
-import com.chatting.chatting.certification.type.UserRoleEnum;
+import com.chatting.chatting.certification.model.type.UserRoleEnum;
 import com.chatting.chatting.global.exection.CustomException;
 import com.chatting.chatting.global.model.type.ErrorCode;
 import com.chatting.chatting.global.model.type.RedisType;

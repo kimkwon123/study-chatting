@@ -1,12 +1,17 @@
 package com.chatting.chatting.certification.model.entity;
 
 import com.chatting.chatting.certification.model.type.UserGender;
-import com.chatting.chatting.certification.type.UserRoleEnum;
+import com.chatting.chatting.certification.model.type.UserRoleEnum;
 import com.chatting.chatting.global.model.entity.AuditingEntity;
+import com.chatting.chatting.shop.model.entity.Shop;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -35,9 +40,13 @@ public class User extends AuditingEntity {
     @Column
     private Double temperature;
 
+    @Setter
     @Column
     @Enumerated(EnumType.STRING)
     private UserRoleEnum role = UserRoleEnum.USER;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Shop> shopList = new ArrayList<>();
 
     protected User() {
     }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import java.util.Properties;
 import java.util.Random;
 
-@RequiredArgsConstructor
 @Component
 public class EmailUtil {
 

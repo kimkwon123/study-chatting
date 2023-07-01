@@ -3,7 +3,7 @@ package com.chatting.chatting.certification.filter;
 
 import com.chatting.chatting.certification.model.UserDetailsImpl;
 import com.chatting.chatting.certification.model.request.LoginRequest;
-import com.chatting.chatting.certification.type.UserRoleEnum;
+import com.chatting.chatting.certification.model.type.UserRoleEnum;
 import com.chatting.chatting.certification.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
