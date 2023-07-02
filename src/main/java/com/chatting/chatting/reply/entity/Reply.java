@@ -20,6 +20,7 @@ public class Reply {
     private Long replyId;
     @Column
     private String content;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "inquiry_id")

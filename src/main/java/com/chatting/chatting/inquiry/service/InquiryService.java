@@ -43,12 +43,13 @@ public class InquiryService {
     public List<InquiryResponse> getAllInquirys(UserDetailsImpl userDetails) {
         Optional<List<Inquiry>> inquiryList = inquiryRepository.findAllByUser(userDetails.getUser());
 
-        if(checkUser(userDetails,inquiryList.get().get(0))){
-            return inquiryList.get().stream().map(factor -> new InquiryResponse(factor)).collect(Collectors.toList());
+        if (inquiryList.isPresent() && checkUser(userDetails, inquiryList.get().get(0))) {
+            return inquiryList.get().stream().map(InquiryResponse::new).collect(Collectors.toList());
         }
 
         return null;
     }
+
 
     public InquiryResponse getInquiry(Long inquiryId, UserDetailsImpl userDetails) {
         Inquiry inquiry = inquiryRepository.findById(inquiryId).orElseThrow(() ->

@@ -81,7 +81,7 @@ public class JwtUtil {
         if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
             return tokenValue.substring(7);
         }
-        throw new CustomException(ErrorCode.WRONG_TOKEN);
+        throw new CustomException(ErrorCode.WORNG_TOKEN);
     }
 
     // 토큰 검증

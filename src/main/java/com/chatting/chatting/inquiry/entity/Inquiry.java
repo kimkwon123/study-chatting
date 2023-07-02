@@ -5,6 +5,7 @@ import com.chatting.chatting.certification.model.entity.User;
 import com.chatting.chatting.inquiry.request.InquiryRequest;
 import com.chatting.chatting.inquiry.type.InquiryCategory;
 import com.chatting.chatting.reply.entity.Reply;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ public class Inquiry {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
 
     @OneToMany(mappedBy = "inquiry",cascade = CascadeType.ALL)
     private List<Reply> reply;
