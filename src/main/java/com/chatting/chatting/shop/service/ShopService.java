@@ -38,7 +38,7 @@ public class ShopService {
                 .auction(req.auction())
                 .cate(getCateType(req.cate()))
                 .user(user)
-                .img(getImages(images,user.getUserId()))
+                .img(getImages(images, user.getUserId()))
                 .money(req.money())
                 .progressive(ProgressiveType.WAIT)
                 .build());
@@ -55,14 +55,14 @@ public class ShopService {
         if (shop.getUser().equals(user)) {
             shop.setShopName(req.shopName());
             shop.setShopContent(req.shopContent());
-            shop.setImg(getImages(images,user.getUserId()));
+            shop.setImg(getImages(images, user.getUserId()));
             shop.setMoney(req.money());
             shop.setAuction(req.auction());
             shop.setCate(getCateType(req.cate()));
             return ShopResponse.getShopCreateRequest(shop);
-        } else {
-            throw new CustomException(ErrorCode.WRONG_SHOP_USER);
         }
+        throw new CustomException(ErrorCode.WRONG_SHOP_USER);
+
     }
 
     @Transactional
@@ -74,9 +74,9 @@ public class ShopService {
         if (shop.getUser().equals(user)) {
             shopRepository.deleteById(shopPid);
             return "성공적으로 상품이 삭제되었습니다.";
-        } else {
-            throw new CustomException(ErrorCode.WRONG_SHOP_USER);
         }
+        throw new CustomException(ErrorCode.WRONG_SHOP_USER);
+
     }
 
     //상품 판매 완료
@@ -89,12 +89,12 @@ public class ShopService {
         if (shop.getUser().equals(user)) {
             shop.setProgressive(ProgressiveType.SELL);
             return "상품 판매가 완료되었습니다.";
-        } else {
-            throw new CustomException(ErrorCode.WRONG_SHOP_USER);
         }
+        throw new CustomException(ErrorCode.WRONG_SHOP_USER);
+
     }
 
-    private List<String> getImages(List<MultipartFile> files, String userId){
+    private List<String> getImages(List<MultipartFile> files, String userId) {
         List<String> imageList = new ArrayList<>();
         if (Objects.isNull(files)) {
             imageList.add(DEFAULT_IMG);
