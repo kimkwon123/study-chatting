@@ -5,15 +5,14 @@ import com.chatting.chatting.global.model.entity.AuditingEntity;
 import com.chatting.chatting.shop.model.type.CateType;
 import com.chatting.chatting.shop.model.type.ProgressiveType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
 public class Shop extends AuditingEntity {
@@ -25,6 +24,9 @@ public class Shop extends AuditingEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userPid")
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shop", fetch = FetchType.LAZY)
+    private List<ShopHeart> shopHearts = new ArrayList<>();
 
     @Setter
     @Column
@@ -54,8 +56,5 @@ public class Shop extends AuditingEntity {
     @Enumerated
     @Column
     private CateType cate;
-
-    protected Shop() {
-    }
 
 }

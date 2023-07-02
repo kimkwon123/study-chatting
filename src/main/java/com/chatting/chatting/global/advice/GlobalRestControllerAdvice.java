@@ -15,6 +15,7 @@ public class GlobalRestControllerAdvice {
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> applicationHandler(CustomException e){
+        System.out.println(e);
         return ResponseEntity.status(e.getErrorCode().getStatus())
                 .body(ResponseJson.error(e.getErrorCode().name(),e.getErrorCode().getMessage()));
     }

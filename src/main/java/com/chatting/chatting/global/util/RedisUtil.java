@@ -13,13 +13,13 @@ public class RedisUtil {
 
     private final RedisTemplate myRedisTemplate;
 
-
     public String getString(String key) {
         if(Objects.isNull(myRedisTemplate.opsForValue().get(key))){
             return null;
         }
         return myRedisTemplate.opsForValue().get(key).toString();
     }
+
     public void setString(String key, String value) {
         myRedisTemplate.opsForValue().set(key, value);
     }
@@ -28,6 +28,5 @@ public class RedisUtil {
     public void setString(String key, String value, long timer, TimeUnit time) {
         myRedisTemplate.opsForValue().set(key, value,timer, time);
     }
-
 
 }
