@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/reply")
 @RequiredArgsConstructor
@@ -20,10 +22,20 @@ public class ReplyController {
     public ResponseJson<String> createReply(@PathVariable("inquiryId") Long inquiryId,
                                             @RequestBody ReplyRequest request,
                                             @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        // PostRequestDto를 사용하여 게시글을 생성하고, 생성된 게시글의 정보를 PostResponseDto에 담아 반환합니다.
+
         String msg = replyService.createReply(inquiryId,request, userDetails);
 
         return ResponseJson.success("success", msg);
+    }
+
+    @GetMapping("/{inquiryId}")
+    public ResponseJson <List<ReplyResponse>> getReplyForInquiry(
+            @PathVariable("inquiryId") Long inquiryId,
+            @AuthenticationPrincipal UserDetailsImpl userDetails) {
+
+        List<ReplyResponse> replyList = replyService.getReplyForInquiry( inquiryId, userDetails);
+
+        return ResponseJson.success("success", replyList);
     }
 
     @PutMapping("/{replyId}")
