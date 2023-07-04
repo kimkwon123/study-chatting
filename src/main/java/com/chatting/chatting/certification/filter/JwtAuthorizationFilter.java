@@ -2,7 +2,7 @@ package com.chatting.chatting.certification.filter;
 
 
 import com.chatting.chatting.certification.service.LoginService;
-import com.chatting.chatting.certification.util.JwtUtil;
+import com.chatting.chatting.global.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
