@@ -9,6 +9,7 @@ import com.chatting.chatting.reply.request.RatingByUserRequest;
 import com.chatting.chatting.reply.response.RatingByUserResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,9 @@ public class RatingByUserService {
         Reply reply = replyRepository.findById(replyId).orElseThrow(() ->
                 new CustomException(ErrorCode.NO_REPLY)
         );
+
+        Hibernate.initialize(reply.getUser());
+
         log.info(reply.getUser().getUserId());
 
         if(!checkThisUserInquiryWrite(userDetails,reply)){

@@ -40,6 +40,7 @@ public class InquiryService {
     }
 
 
+    @Transactional()
     public List<InquiryResponse> getAllInquirys(UserDetailsImpl userDetails) {
         Optional<List<Inquiry>> inquiryList = inquiryRepository.findAllByUser(userDetails.getUser());
 

@@ -40,7 +40,7 @@ public class User extends AuditingEntity {
     @Column
     private Double temperature;
 
-    @Setter
+
     @Column
     Double starFromCustomer = (double) 0;
 

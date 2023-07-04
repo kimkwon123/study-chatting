@@ -11,6 +11,8 @@ import com.chatting.chatting.reply.repository.ReplyRepository;
 import com.chatting.chatting.reply.request.ReplyRequest;
 import com.chatting.chatting.reply.response.ReplyResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ReplyService {
     private final ReplyRepository replyRepository;
     private final InquiryRepository inquiryRepository;
@@ -42,20 +45,29 @@ public class ReplyService {
         return "답변 완료";
     }
 
+    @Transactional
     public List<ReplyResponse> getReplyForInquiry(Long inquiryId, UserDetailsImpl userDetails) {
         Inquiry inquiry = inquiryRepository.findById(inquiryId).orElseThrow(() ->
                 new CustomException(ErrorCode.NO_INQUIRY)
         );
 
+
+        Hibernate.initialize(inquiry.getUser());
+
+        String userIdOfInquiry = inquiry.getUser().getUserId();
+
         //문의를 작성한 사람이거나 , 관리자이거나
-        if(!checkAdmin(userDetails) ||
-                !userDetails.getUsername().equals(inquiry.getUser().getUserId())){
+        if(checkAdmin(userDetails) ||
+                userDetails.getUsername().equals(userIdOfInquiry)){
+            Optional<Reply> replyList = replyRepository.findAllByInquiry(inquiry);
+
+            return replyList.stream().map(ReplyResponse::new).toList();
+
+        }else{
             throw new CustomException(ErrorCode.UNAUTHORIZED_ACCESS_TO_REPLY);
         }
 
-        Optional<Reply> replyList = replyRepository.findAllByInquiry(inquiry);
 
-        return replyList.stream().map(ReplyResponse::new).toList();
     }
 
 
