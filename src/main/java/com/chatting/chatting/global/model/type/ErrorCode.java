@@ -18,11 +18,13 @@ public enum ErrorCode {
     NO_INQUIRY_CONTENT(HttpStatus.BAD_REQUEST, "내용을 입력해주세요"),
     NO_INQUIRY_CATEGORY(HttpStatus.BAD_REQUEST, "문의 카테고리를 선택하세요"),
     NO_AUTHORITY_TO_INQUIRY(HttpStatus.BAD_REQUEST, "문의에 대한 수정/삭제 권한이 없습니다."),
+    NO_WRITER_TO_INQUIRY(HttpStatus.BAD_REQUEST, "당신은 해당 문의글을 작성한 사람이 아닙니다."),
     NO_INQUIRY(HttpStatus.BAD_REQUEST, "존재하지 않는 문의글 입니다."),
     NO_REPLY_CONTENT(HttpStatus.BAD_REQUEST, "내용을 입력하세요"),
     NO_ADMIN(HttpStatus.BAD_REQUEST, "당신은 관리자가 아닙니다."),
     NO_REPLY(HttpStatus.BAD_REQUEST, "문의에 대한 답변이 없습니다."),
     NO_AUTHORITY_TO_REPLY(HttpStatus.BAD_REQUEST, "답변에 대한 수정/삭제 권한이 없습니다."),
+    UNAUTHORIZED_ACCESS_TO_REPLY(HttpStatus.BAD_REQUEST, "문의 작성자나 관리자가 아닙니다. "),
     NO_SHOP(HttpStatus.BAD_REQUEST, "해당 물품이 없습니다."),
     WRONG_SHOP_USER(HttpStatus.BAD_REQUEST, "해당 물품이 없습니다.")
     ;

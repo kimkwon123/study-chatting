@@ -42,7 +42,7 @@ public class User extends AuditingEntity {
 
     @Setter
     @Column
-    Double starFromCustomer;
+    Double starFromCustomer = (double) 0;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -52,7 +52,16 @@ public class User extends AuditingEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Shop> shopList = new ArrayList<>();
 
+    int cnt_reply=0;
+
     protected User() {
     }
 
+    public Double updateRating(int rating) {
+        double sum = this.starFromCustomer * this.cnt_reply;
+        this.cnt_reply++;
+        this.starFromCustomer = (sum+rating) / (this.cnt_reply) ;
+
+        return this.starFromCustomer;
+    }
 }
