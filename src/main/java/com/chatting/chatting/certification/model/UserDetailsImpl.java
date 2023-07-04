@@ -3,24 +3,26 @@ package com.chatting.chatting.certification.model;
 
 import com.chatting.chatting.certification.model.entity.User;
 import com.chatting.chatting.certification.model.type.UserRoleEnum;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+
+@RequiredArgsConstructor
 public class UserDetailsImpl implements UserDetails {
 
     private final User user;
 
-    public UserDetailsImpl(User user) {
-        this.user = user;
-    }
-
     public User getUser() {
         return user;
     }
+
 
     @Override
     public String getPassword() {

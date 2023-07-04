@@ -1,4 +1,4 @@
-package com.chatting.chatting.certification.util;
+package com.chatting.chatting.global.util;
 
 
 
@@ -23,6 +23,7 @@ import java.net.URLEncoder;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
+
 @Slf4j(topic = "jwt") //카테고리처럼 분류
 @RequiredArgsConstructor
 @Component

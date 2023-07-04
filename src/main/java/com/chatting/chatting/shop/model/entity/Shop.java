@@ -28,6 +28,9 @@ public class Shop extends AuditingEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shop", fetch = FetchType.LAZY)
     private List<ShopHeart> shopHearts = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shop", fetch = FetchType.LAZY)
+    private List<ShopRoom> shopRooms = new ArrayList<>();
+
     @Setter
     @Column
     private String shopName;

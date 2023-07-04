@@ -8,5 +8,4 @@ public record ShopCreateRequest(
         String cate
 ){
 
-
 }
