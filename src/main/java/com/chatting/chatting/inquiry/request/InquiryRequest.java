@@ -5,11 +5,11 @@ import com.chatting.chatting.inquiry.type.InquiryCategory;
 import lombok.Getter;
 
 
-public record InquiryRequest(String title,
-                             String content,
-                             InquiryCategory category,
-                             String ImageUrl
-
+public record InquiryRequest(
+         String title,
+         String content,
+         InquiryCategory category,
+         String ImageUrl
  ) {
 
 }

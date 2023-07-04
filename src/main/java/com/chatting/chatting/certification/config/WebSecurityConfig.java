@@ -1,5 +1,6 @@
 package com.chatting.chatting.certification.config;
 
+import com.chatting.chatting.certification.model.type.UserRoleEnum;
 import com.chatting.chatting.certification.service.LoginService;
 import com.chatting.chatting.certification.util.JwtUtil;
 import com.chatting.chatting.certification.filter.JwtAuthenticationFilter;
@@ -54,6 +55,8 @@ public class WebSecurityConfig {
 
         http.authorizeHttpRequests((authorizeHttpRequests) ->
                 authorizeHttpRequests
+//                        .requestMatchers("/api/inquiry/**").hasRole(UserRoleEnum.USER.getRole())
+//                        .requestMatchers(("/api/reply/**")).hasRole(UserRoleEnum.AGENT.getRole())
                         .requestMatchers(
                                 "/api/login",
                                 "/api/register",

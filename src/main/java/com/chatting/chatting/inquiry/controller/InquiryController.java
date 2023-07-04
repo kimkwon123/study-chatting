@@ -21,11 +21,11 @@ import java.util.List;
 public class InquiryController {
     private final InquiryService inquiryService;
 
+
     @PostMapping("")
     public ResponseJson<String> createInquiry(@RequestBody InquiryRequest request, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         // PostRequestDto를 사용하여 게시글을 생성하고, 생성된 게시글의 정보를 PostResponseDto에 담아 반환합니다.
         String msg = inquiryService.createInquiry(request, userDetails);
-
         return ResponseJson.success("success", msg);
     }
 

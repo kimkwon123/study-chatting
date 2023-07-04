@@ -14,7 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,6 +40,22 @@ public class ReplyService {
         replyRepository.save(new Reply(request,inquiry,userDetails));
 
         return "답변 완료";
+    }
+
+    public List<ReplyResponse> getReplyForInquiry(Long inquiryId, UserDetailsImpl userDetails) {
+        Inquiry inquiry = inquiryRepository.findById(inquiryId).orElseThrow(() ->
+                new CustomException(ErrorCode.NO_INQUIRY)
+        );
+
+        //문의를 작성한 사람이거나 , 관리자이거나
+        if(!checkAdmin(userDetails) ||
+                !userDetails.getUsername().equals(inquiry.getUser().getUserId())){
+            throw new CustomException(ErrorCode.UNAUTHORIZED_ACCESS_TO_REPLY);
+        }
+
+        Optional<Reply> replyList = replyRepository.findAllByInquiry(inquiry);
+
+        return replyList.stream().map(ReplyResponse::new).toList();
     }
 
 
@@ -87,6 +105,7 @@ public class ReplyService {
         }
         return false;
     }
+
 
 
 }
