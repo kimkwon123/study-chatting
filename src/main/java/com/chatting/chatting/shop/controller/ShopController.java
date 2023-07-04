@@ -18,6 +18,8 @@ import java.util.List;
 @RequestMapping("/api/shop")
 public class ShopController {
 
+    //TODO: 경매와 조회는 나중에..
+
     private final ShopService service;
 
     @PostMapping
